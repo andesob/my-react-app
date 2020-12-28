@@ -1,11 +1,18 @@
-import React, { Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import styles from '../Styles/Header.css';
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = { click: false };
+        this.changeMenuState = this.changeMenuState.bind(this);
+      }
+
+      changeMenuState(){
+        this.setState({
+            click: !this.state.click
+        });
       }
 
     render() {
@@ -16,16 +23,12 @@ class Header extends Component {
                         WELCOME TO MY PAGE
                     </div>
 
-                    <div className='menu-icon' onClick={e => this.setState({
-                        click: !this.state.click
-                    }) }>
-                        Change click: {this.state.click.toString()}
+                    <div className='menu-icon' onClick={this.changeMenuState}>
+                        MENU
                     </div>
                 </div>
                 <nav className={this.state.click ? 'shown' : 'hidden'} 
-                onClick={e => this.setState({
-                    click: !this.state.click
-                }) }>       
+                onClick={this.changeMenuState}>       
                     <ul>
                         <li>
                             <Link to='/'>Homepage</Link>
