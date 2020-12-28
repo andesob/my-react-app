@@ -12,11 +12,9 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
   }
   
   li {
-    float: left;
     border-right: 1px solid #bbb;
   }
   
@@ -26,9 +24,42 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-size: 200%;
   }
   
   /* Change the link color to #111 (black) on hover */
   li a:hover {
     background-color: #111;
+  }
+
+  .headerDiv{
+    display: block;
+    background-color: black;
+    color: white;
+  }
+
+  .headerText{
+    display: inline-block;
+    padding: 14px 16px;
+  }
+
+  .menu-icon{
+    display: inline-block;
+    float: right;
+    padding: 14px 16px;
+    background-color: rgb(56, 56, 56);
+  }
+
+  .shown{
+    display: block;
+    background-color: blueviolet;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .hidden{
+    display: none;
   }

@@ -4,8 +4,7 @@ import Homepage from './Pages/Homepage';
 import Dishwashers from './Pages/SandwichMaker';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 
 //import './Styles/default.css';
