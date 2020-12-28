@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-
+import styles from '../Styles/Header.module.css';
 
 class Header extends Component {
     render() {
         return (
-            <header>
-                <div>
-                    isthislive?
-            </div>
+            <header className={styles.headerClass}>
                 <nav>
                     <ul>
                         <li>

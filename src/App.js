@@ -8,6 +8,8 @@ import {
   Link
 } from 'react-router-dom';
 
+//import './Styles/default.css';
+
 class App extends Component {
   render() {
     return (

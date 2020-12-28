@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 class Header extends Component {
     render() {
         return (
-            <header>
+            <div>
                 <div>
                     I DONT MAKE SANDWICHES BITCHASS
                 </div>
-            </header>
+            </div>
         );
     }
 }
