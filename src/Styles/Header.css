@@ -1,0 +1,68 @@
+.headerClass {
+    display: block;
+    background-color: #282c34;
+    color: white;
+    margin-bottom: 20px;
+    font-family: Arial;
+    text-align: center;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    border-right: 1px solid #bbb;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 200%;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+
+  .headerDiv{
+    display: block;
+    background-color: black;
+    color: white;
+  }
+
+  .headerText{
+    display: inline-block;
+    padding: 14px 16px;
+  }
+
+  .menu-icon{
+    display: inline-block;
+    float: right;
+    padding: 14px 16px;
+    background-color: rgb(56, 56, 56);
+  }
+
+  nav{
+    background: #242222;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    transition: all 0.5s ease;
+  }
+
+  .shown{
+    left: 0;
+  }
+
+  .hidden{
+    left: -100%;
+  }
