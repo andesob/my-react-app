@@ -40,7 +40,7 @@ class Header extends Component {
         }
 
         // set interval for polling every 0.1 seconds
-        this.interval = setInterval(() => this.tick(), 100);
+        this.interval = setInterval(() => this.tick(), 1000);
     }
 
     tick() {

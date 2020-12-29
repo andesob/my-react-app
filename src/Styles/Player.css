@@ -22,7 +22,7 @@
 .now-playing__img {
     display: block;
     margin: auto;
-    width: 45%;
+    width: 30%;
 }
 
 .now-playing__img img {
@@ -67,5 +67,5 @@
 
 .progress__bar {
     background-color: rgb(10, 10, 10);
-    height: 4px;
+    height: 100%;
 }
