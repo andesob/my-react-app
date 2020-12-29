@@ -39,8 +39,8 @@ class Header extends Component {
             this.getCurrentlyPlaying(_token);
         }
 
-        // set interval for polling every 5 seconds
-        this.interval = setInterval(() => this.tick(), 5000);
+        // set interval for polling every 0.1 seconds
+        this.interval = setInterval(() => this.tick(), 100);
     }
 
     tick() {
