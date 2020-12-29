@@ -1,5 +1,11 @@
 /** Now Playing **/
 
+.main-wrapper{
+    display: block;
+    margin: auto;
+    margin-top: 2%;
+}
+
 .now-playing__name {
     font-size: 1.5em;
     margin-bottom: 0.2em;
@@ -14,9 +20,8 @@
 }
 
 .now-playing__img {
-    float: left;
-    margin-right: 10px;
-    text-align: right;
+    display: block;
+    margin: auto;
     width: 45%;
 }
 
@@ -26,7 +31,7 @@
 }
 
 .now-playing__side {
-    margin-left: 5%;
+    margin: auto;
     width: 45%;
 }
 

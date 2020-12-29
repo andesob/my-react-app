@@ -1,6 +1,5 @@
 import React from "react";
 import "./Styles/Player.css";
-import Dishwashers from './Pages/SandwichMaker';
 
 const Player = props => {
   const backgroundStyles = {

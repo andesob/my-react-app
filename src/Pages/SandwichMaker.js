@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import hash from "../hash";
-import "../Styles/Player.css";
+import Player from '../Player';
 
 
 class Header extends Component {
@@ -29,6 +29,7 @@ class Header extends Component {
     componentDidMount() {
         // Set token
         let _token = hash.access_token;
+        console.log(_token);
 
         if (_token) {
             // Set token
@@ -37,7 +38,6 @@ class Header extends Component {
             });
             this.getCurrentlyPlaying(_token);
         }
-        console.log(_token);
 
         // set interval for polling every 5 seconds
         this.interval = setInterval(() => this.tick(), 5000);
@@ -57,9 +57,21 @@ class Header extends Component {
             })
         })
             .then(results => {
+                if (!(results.status === 200)) {
+                    this.setState({
+                        no_data: true,
+                    });
+                    return;
+                }
                 return results.json();
             })
             .then(data => {
+                if (!data) {
+                    this.setState({
+                        no_data: true,
+                    });
+                    return;
+                }
                 this.setState({
                     item: data.item,
                     is_playing: data.is_playing,
@@ -73,44 +85,31 @@ class Header extends Component {
     render() {
         const client_id = encodeURIComponent('4b0271ca6abb4bdca5018dabdf98d6a9');
         const responseType = encodeURIComponent('token');
-        const redirect = encodeURIComponent('http://localhost:3000');
+        const redirect = encodeURIComponent('http://localhost:3000/Hotmilfsinmyarea');
         const showDialogue = encodeURIComponent('true');
-        const scopes = encodeURIComponent('user-read-currently-playing user-read-playback-state');
+        const scopes = encodeURIComponent('user-read-currently-playing user-read-playback-state user-modify-playback-state');
 
-        const progressBarStyles = {
-            width: (this.state.progress_ms * 100 / this.state.item.duration_ms) + '%'
-        };
-
-        const backgroundStyles = {
-            backgroundImage: this.state.item.album.images[0]
-        };
 
         if (!this.state.isLoading) {
             return (
                 <div>
-                     {!this.state.token && (
-                    <a className='btn' href={`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=${responseType}&redirect_uri=${redirect}&show_dialog=${showDialogue}&scope=${scopes}`}>LOGINHER</a>
+                    {!this.state.token && (
+                        <a className='btn' href={`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=${responseType}&redirect_uri=${redirect}&show_dialog=${showDialogue}&scope=${scopes}`}>LOGG INN HER</a>
                     )}
-                    <div className="App">
-                        <div className="main-wrapper">
-                            <div className="now-playing__img">
-                                <img src={this.state.item.album.images[0].url} />
-                            </div>
-                            <div className="now-playing__side">
-                                <div className="now-playing__name">{this.state.item.name}</div>
-                                <div className="now-playing__artist">
-                                    {this.state.item.artists[0].name}
-                                </div>
-                                <div className="now-playing__status">
-                                    {this.state.is_playing ? "Playing" : "Paused"}
-                                </div>
-                                <div className="progress">
-                                    <div className="progress__bar" style={progressBarStyles} />
-                                </div>
-                            </div>
-                            <div className="background" style={backgroundStyles} />{" "}
-                        </div>
-                    </div>
+
+                    {this.state.token && !this.state.no_data && (
+                        <Player
+                            item={this.state.item}
+                            is_playing={this.state.is_playing}
+                            progress_ms={this.state.progress_ms}
+                        />
+                    )}
+
+                    {this.state.no_data && (
+                        <p>
+                            SPILL AV MUSIKK FOR FAEN
+                        </p>
+                    )}
                 </div >
             );
         } else {
