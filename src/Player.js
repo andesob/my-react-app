@@ -77,9 +77,9 @@ function Player(props) {
                         <div className="progress__bar" style={progressBarStyles} />
                     </div>
                     <div className="buttons">
-                        <button onClick={handlePreviousClick} className='previousSong'>Previous</button>
-                        <button onClick={handlePlayClick} className={props.is_playing ? "pauseBtn" : "playBtn"} type="button">{props.is_playing ? "Pause" : "Play"}</button>
-                        <button onClick={handleNextClick} className='nextSong'>Next</button>
+                        <img className='prevbtnImg' src='/skipprevbtn.png' onClick={handlePreviousClick}></img>
+                        <img className='playbtnImg' src={props.is_playing ? '/pausebtn.png' : '/playbtn.png'} onClick={handlePlayClick}></img>
+                        <img className='nextbtnImg' src='/skipnextbtn.png' onClick={handleNextClick}></img>
                     </div>
                 </div>
                 <div className="background" style={backgroundStyles} />{" "}

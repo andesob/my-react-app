@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import hash from "../hash";
 import Player from '../Player';
+import '../Styles/musicPage.css';
 
 
-class Header extends Component {
+class Musicpage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,7 +40,7 @@ class Header extends Component {
             this.getCurrentlyPlaying(_token);
         }
 
-        // set interval for polling every 0.1 seconds
+        // set interval for polling every 1 seconds
         this.interval = setInterval(() => this.tick(), 1000);
     }
 
@@ -85,16 +86,17 @@ class Header extends Component {
     render() {
         const client_id = encodeURIComponent('4b0271ca6abb4bdca5018dabdf98d6a9');
         const responseType = encodeURIComponent('token');
-        const redirect = encodeURIComponent('http://158.38.101.179:5000/Hotmilfsinmyarea');
+        const redirect = encodeURIComponent('http://localhost:3000/Hotmilfsinmyarea');
         const showDialogue = encodeURIComponent('true');
         const scopes = encodeURIComponent('user-read-currently-playing user-read-playback-state user-modify-playback-state');
 
 
         if (!this.state.isLoading) {
             return (
-                <div>
+                <div className='mainDiv'>
                     {!this.state.token && (
-                        <a className='btn' href={`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=${responseType}&redirect_uri=${redirect}&show_dialog=${showDialogue}&scope=${scopes}`}>LOGG INN HER</a>
+                            <a className='loginBtn' href={`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=${responseType}&redirect_uri=${redirect}&show_dialog=${showDialogue}&scope=${scopes}`}>Log in with Spotify</a>
+                        
                     )}
 
                     {this.state.token && !this.state.no_data && (
@@ -123,4 +125,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default Musicpage;
