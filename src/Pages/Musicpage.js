@@ -87,7 +87,7 @@ class Musicpage extends Component {
     render() {
         const client_id = encodeURIComponent('4b0271ca6abb4bdca5018dabdf98d6a9');
         const responseType = encodeURIComponent('token');
-        const redirect = encodeURIComponent('http://localhost:3000/Hotmilfsinmyarea');
+        const redirect = encodeURIComponent('http://158.38.101.179:5000/Hotmilfsinmyarea');
         const showDialogue = encodeURIComponent('true');
         const scopes = encodeURIComponent('user-read-currently-playing user-read-playback-state user-modify-playback-state');
 
