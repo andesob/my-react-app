@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import hash from "../hash";
 import Player from '../Player';
+import Searchbar from '../Searchbar';
 import '../Styles/musicPage.css';
 
 
@@ -95,8 +96,8 @@ class Musicpage extends Component {
             return (
                 <div className='mainDiv'>
                     {!this.state.token && (
-                            <a className='loginBtn' href={`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=${responseType}&redirect_uri=${redirect}&show_dialog=${showDialogue}&scope=${scopes}`}>Log in with Spotify</a>
-                        
+                        <a className='loginBtn' href={`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=${responseType}&redirect_uri=${redirect}&show_dialog=${showDialogue}&scope=${scopes}`}>Log in with Spotify</a>
+
                     )}
 
                     {this.state.token && !this.state.no_data && (
@@ -105,6 +106,10 @@ class Musicpage extends Component {
                             is_playing={this.state.is_playing}
                             progress_ms={this.state.progress_ms}
                         />
+                    )}
+
+                    {this.state.token && !this.state.no_data && (
+                        <Searchbar></Searchbar>
                     )}
 
                     {this.state.no_data && (
