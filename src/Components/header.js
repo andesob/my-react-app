@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../Styles/Header.css';
 
 class Header extends Component {
@@ -7,13 +7,13 @@ class Header extends Component {
         super(props);
         this.state = { click: false };
         this.changeMenuState = this.changeMenuState.bind(this);
-      }
+    }
 
-      changeMenuState(){
+    changeMenuState() {
         this.setState({
             click: !this.state.click
         });
-      }
+    }
 
     render() {
         return (
@@ -27,8 +27,8 @@ class Header extends Component {
                         MENU
                     </div>
                 </div>
-                <nav className={this.state.click ? 'shown' : 'hidden'} 
-                onClick={this.changeMenuState}>       
+                <nav className={this.state.click ? 'shown' : 'hidden'}
+                    onClick={this.changeMenuState}>
                     <ul>
                         <li>
                             <Link to='/'>Homepage</Link>

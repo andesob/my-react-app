@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Components/header';
 import Homepage from './Pages/Homepage';
-import Dishwashers from './Pages/SandwichMaker';
+import Musicpage from './Pages/Musicpage';
 import {
   BrowserRouter as Router,
   Route
@@ -18,7 +18,7 @@ class App extends Component {
         <div className="App">
           <Header />
           <Route exact path='/' component={Homepage} />
-          <Route exact path='/Hotmilfsinmyarea' component={Dishwashers} />
+          <Route exact path='/Hotmilfsinmyarea' component={Musicpage} />
         </div>
       </Router>
     );

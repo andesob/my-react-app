@@ -63,7 +63,7 @@ function Player(props) {
         <div className="App">
             <div className="main-wrapper">
                 <div className="now-playing__img">
-                    <img src={props.item.album.images[0].url} />
+                    <img src={props.item.album.images[0].url} alt='idk'/>
                 </div>
                 <div className="now-playing__side">
                     <div className="now-playing__name">{props.item.name}</div>
@@ -77,9 +77,9 @@ function Player(props) {
                         <div className="progress__bar" style={progressBarStyles} />
                     </div>
                     <div className="buttons">
-                        <button onClick={handlePreviousClick} className='previousSong'>Previous</button>
-                        <button onClick={handlePlayClick} className={props.is_playing ? "pauseBtn" : "playBtn"} type="button">{props.is_playing ? "Pause" : "Play"}</button>
-                        <button onClick={handleNextClick} className='nextSong'>Next</button>
+                        <img className='prevbtnImg' src='/skipprevbtn.png' onClick={handlePreviousClick} alt='idk'></img>
+                        <img className='playbtnImg' src={props.is_playing ? '/pausebtn.png' : '/playbtn.png'} onClick={handlePlayClick} alt='idk'></img>
+                        <img className='nextbtnImg' src='/skipnextbtn.png' onClick={handleNextClick} alt='idk'></img>
                     </div>
                 </div>
                 <div className="background" style={backgroundStyles} />{" "}
