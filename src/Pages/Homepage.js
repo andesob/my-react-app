@@ -1,41 +1,55 @@
 import React, { Component } from 'react';
+import '../Styles/homepage.css';
 
 
 class Homepage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: [],
+            catUrl: '',
             isLoading: true
         };
+
+        this.getNewCat = this.getNewCat.bind(this);
     }
 
     componentDidMount() {
+        this.getNewCat();
+    }
+
+    getNewCat() {
         this.setState({
             isLoading: true
         })
-        fetch('https://the-one-api.dev/v2/book')
+        fetch('https://api.thecatapi.com/v1/images/search', {
+            headers: new Headers({
+                'x-api-key': '60e70a58-0b7b-432b-b4e3-ee4a7f61ec99'
+            })
+        })
             .then(results => {
                 return results.json();
             }).then(data => {
                 this.setState({
-                    books: data.docs,
+                    catUrl: data[0].url,
                     isLoading: false
                 })
             })
-
     }
 
     render() {
         if (!this.state.isLoading) {
             console.log(this.state.books)
             return (
-                <div>
-                    {this.state.books.map(book => <div key={book._id}> {book.name} </div>)} 
+                <div className='main-wrapper'>
+                    <div className='wrapper'>
+                        <img className='catImg' src={this.state.catUrl} alt='fordi jeg må'></img>
+
+                        <button className='newCatBtn' onClick={this.getNewCat}>New cat</button>
+                    </div>
                 </div>
             );
-        } else{
-            return(
+        } else {
+            return (
                 <div>
                     Loading information
                 </div>
