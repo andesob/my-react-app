@@ -1,4 +1,18 @@
 .wrapper{
+    overflow: hidden;
     margin: auto;
+    width: 30%;
     text-align: center;
+}
+
+.emptysonglist{
+    display: none;
+}
+
+.songlist{
+    padding: 10px;
+}
+
+.songlist div{
+    border:2px solid black;
 }

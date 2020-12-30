@@ -8,7 +8,7 @@ class Searchbar extends Component {
         super(props);
         this.state = {
             inputValue: null,
-            no_data: false,
+            no_data: true,
             items: [{
                 name: "",
                 uri: "",
@@ -71,6 +71,10 @@ class Searchbar extends Component {
                 'Authorization': 'Bearer ' + _token
             })
         })
+        this.setState({
+            no_data: true,
+            inputValue: ""
+        })
     }
 
     render() {
@@ -80,11 +84,12 @@ class Searchbar extends Component {
                     <input
                         className='inputField'
                         placeholder={"Search songs"}
-                        onChange={evt => this.inputChange(evt)}></input>
+                        onChange={evt => this.inputChange(evt)}
+                        value={this.state.inputValue}></input>
                     <button className='searchBtn' onClick={this.searchSongs}>
                         Search
                     </button>
-                    <div>
+                    <div className={this.state.no_data ? 'emptysonglist' : 'songlist'}>
                         {this.state.items.map(item => <div key={item.uri} onClick={evt => this.songChosen(item.uri)}> {item.name} - {item.artistName} </div>)}
                     </div>
                 </div>
