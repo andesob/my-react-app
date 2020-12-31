@@ -19,20 +19,22 @@ class Homepage extends Component {
         this.getNewCat = this.getNewCat.bind(this);
         this.dislikeCat = this.dislikeCat.bind(this);
         this.likeCat = this.likeCat.bind(this);
+        this.clearStorage = this.clearStorage.bind(this);
+        this.setItem = this.setItem.bind(this);
     }
 
     componentDidMount() {
         var likedCats = JSON.parse(localStorage.getItem('LikedCats'));
-        var cats = likedCats.map(cat => ({
-            id: cat.id,
-            url: cat.url
-        }))
+        if (likedCats) {
+            var cats = likedCats.map(cat => ({
+                id: cat.id,
+                url: cat.url
+            }))
 
-        console.log(cats)
-
-        this.setState({
-            likedCats: cats
-        })
+            this.setState({
+                likedCats: cats
+            })
+        }
         this.getNewCat();
     }
 
@@ -55,8 +57,6 @@ class Homepage extends Component {
                     })),
                     isLoading: false
                 })
-                console.log(this.state.likedCats);
-                console.log(this.state.dislikedCats);
             })
     }
 
@@ -68,14 +68,22 @@ class Homepage extends Component {
         this.getNewCat();
     }
 
+    setItem() {
+        console.log(this.state.likedCats);
+        this.getNewCat();
+        localStorage.setItem('LikedCats', JSON.stringify(this.state.likedCats));
+    }
+
     likeCat() {
         var newList = this.state.likedCats.concat(this.state.cat);
         this.setState({
             likedCats: newList
-        })
-        this.getNewCat();
-        console.log(this.state.likedCats)
-        localStorage.setItem('LikedCats', JSON.stringify(this.state.likedCats));
+        },
+            this.setItem)
+    }
+
+    clearStorage() {
+        localStorage.clear();
     }
 
     render() {
@@ -83,15 +91,24 @@ class Homepage extends Component {
             return (
                 <div className='main-wrapper'>
                     <div className='wrapper'>
-                        {this.state.cat.map(cat => <img className='catImg' src={cat.url} alt='fordi jeg må'></img>)}
+                        {this.state.cat.map(cat => <img key={cat.id} className='catImg' src={cat.url} alt='fordi jeg må'></img>)}
 
                         <button className='dislikeCatBtn' onClick={this.dislikeCat}>Dislike cat</button>
                         <button className='likeCatBtn' onClick={this.likeCat}>Like cat</button>
                     </div>
-                    <Link to={{
-                        pathname: '/likedcats',
-                        likedCats: this.state.likedCats
-                    }}>Liked Cats</Link>
+                    <div className='button-wrapper'>
+                        <div>
+                            <div>
+                                <Link className='likedCatsLink' to={{
+                                    pathname: '/likedcats',
+                                    likedCats: this.state.likedCats
+                                }}>Liked Cats</Link>
+                            </div>
+                            <div>
+                                <button className='deleteButton' onClick={this.clearStorage}>Remove all pictures</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             );
         } else {

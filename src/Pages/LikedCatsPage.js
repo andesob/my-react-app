@@ -5,12 +5,11 @@ function LikedCatsPage(props) {
     function renderImage(imgUrl) {
         return (
                 <div className="grid-element">
-                    <img className="catImages" src={imgUrl} alt="FORDI JEG MÅ IGJEN"></img>
+                    <img className="catImages" key={imgUrl} src={imgUrl} alt="FORDI JEG MÅ IGJEN"></img>
             </div>
         )
     }
 
-    console.log(props)
     return (
         <div className="App">
             <div className="grid-container">
