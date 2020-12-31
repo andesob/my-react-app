@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../Styles/homepage.css';
 
 
@@ -6,11 +7,18 @@ class Homepage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            catUrl: '',
-            isLoading: true
+            isLoading: true,
+            cat: {
+                id: "",
+                url: ""
+            },
+            likedCats: [],
+            dislikedCats: []
         };
 
         this.getNewCat = this.getNewCat.bind(this);
+        this.dislikeCat = this.dislikeCat.bind(this);
+        this.likeCat = this.likeCat.bind(this);
     }
 
     componentDidMount() {
@@ -30,22 +38,47 @@ class Homepage extends Component {
                 return results.json();
             }).then(data => {
                 this.setState({
-                    catUrl: data[0].url,
+                    cat: data.map(cat => ({
+                        id: cat.id,
+                        url: cat.url
+                    })),
                     isLoading: false
                 })
+                console.log(this.state.likedCats);
+                console.log(this.state.dislikedCats);
             })
+    }
+
+    dislikeCat() {
+        var newList = this.state.dislikedCats.concat(this.state.cat);
+        this.setState({
+            dislikedCats: newList
+        })
+        this.getNewCat();
+    }
+
+    likeCat() {
+        var newList = this.state.likedCats.concat(this.state.cat);
+        this.setState({
+            likedCats: newList
+        })
+        this.getNewCat();
     }
 
     render() {
         if (!this.state.isLoading) {
-            console.log(this.state.books)
             return (
                 <div className='main-wrapper'>
                     <div className='wrapper'>
-                        <img className='catImg' src={this.state.catUrl} alt='fordi jeg må'></img>
+                        {this.state.cat.map(cat => <img className='catImg' src={cat.url} alt='fordi jeg må'></img>)}
 
-                        <button className='newCatBtn' onClick={this.getNewCat}>New cat</button>
+                        <button className='dislikeCatBtn' onClick={this.dislikeCat}>Dislike cat</button>
+                        <button className='likeCatBtn' onClick={this.likeCat}>Like cat</button>
                     </div>
+                    <Link to={{
+                        pathname: '/likedcats',
+                        likedCats: this.state.likedCats
+                        }}>Liked Cats</Link>
                 </div>
             );
         } else {

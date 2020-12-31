@@ -54,7 +54,7 @@ class Searchbar extends Component {
                 })
             })
 
-        console.log(this.state.items)
+        console.log("YES: " + this.state.items)
     }
 
     inputChange(newValue) {

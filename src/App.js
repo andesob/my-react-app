@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Components/header';
 import Homepage from './Pages/Homepage';
 import Musicpage from './Pages/Musicpage';
+import LikedCatsPage from './Pages/LikedCatsPage';
 import {
   BrowserRouter as Router,
   Route
@@ -18,6 +19,7 @@ class App extends Component {
         <div className="App">
           <Header />
           <Route exact path='/' component={Homepage} />
+          <Route exact path='/likedcats' component={LikedCatsPage}/>
           <Route exact path='/Hotmilfsinmyarea' component={Musicpage} />
         </div>
       </Router>
