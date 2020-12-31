@@ -22,6 +22,17 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
+        var likedCats = JSON.parse(localStorage.getItem('LikedCats'));
+        var cats = likedCats.map(cat => ({
+            id: cat.id,
+            url: cat.url
+        }))
+
+        console.log(cats)
+
+        this.setState({
+            likedCats: cats
+        })
         this.getNewCat();
     }
 
@@ -63,6 +74,8 @@ class Homepage extends Component {
             likedCats: newList
         })
         this.getNewCat();
+        console.log(this.state.likedCats)
+        localStorage.setItem('LikedCats', JSON.stringify(this.state.likedCats));
     }
 
     render() {
@@ -78,7 +91,7 @@ class Homepage extends Component {
                     <Link to={{
                         pathname: '/likedcats',
                         likedCats: this.state.likedCats
-                        }}>Liked Cats</Link>
+                    }}>Liked Cats</Link>
                 </div>
             );
         } else {
