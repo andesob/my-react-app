@@ -21,6 +21,7 @@ class Homepage extends Component {
         this.likeCat = this.likeCat.bind(this);
         this.clearStorage = this.clearStorage.bind(this);
         this.setItem = this.setItem.bind(this);
+        this.goToLikedCats = this.goToLikedCats.bind(this);
     }
 
     componentDidMount() {
@@ -86,30 +87,40 @@ class Homepage extends Component {
         localStorage.clear();
     }
 
+    goToLikedCats() {
+        return (
+            <Link className='likedCatsLink' to={{
+                pathname: '/likedcats',
+                likedCats: this.state.likedCats
+            }}>Liked Cats</Link>
+        )
+    }
+
     render() {
         if (!this.state.isLoading) {
             return (
                 <div className='main-wrapper'>
-                    <div className='wrapper'>
+                    <div className='homepage-wrapper'>
                         {this.state.cat.map(cat => <img key={cat.id} className='catImg' src={cat.url} alt='fordi jeg må'></img>)}
-
+                    <div>
                         <button className='dislikeCatBtn' onClick={this.dislikeCat}>Dislike cat</button>
                         <button className='likeCatBtn' onClick={this.likeCat}>Like cat</button>
                     </div>
+                    </div>
                     <div className='button-wrapper'>
-                        <div>
-                            <div>
+                        <ul>
+                            <li>
                                 <Link className='likedCatsLink' to={{
                                     pathname: '/likedcats',
                                     likedCats: this.state.likedCats
                                 }}>Liked Cats</Link>
-                            </div>
-                            <div>
+                            </li>
+                            <li>
                                 <button className='deleteButton' onClick={this.clearStorage}>Remove all pictures</button>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </div >
             );
         } else {
             return (

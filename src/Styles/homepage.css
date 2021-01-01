@@ -1,6 +1,8 @@
-.wrapper {
+.homepage-wrapper {
     display: block;
     margin: auto;
+    max-width: 90%;
+    text-align: center;
 }
 
 .catImg {
@@ -40,17 +42,22 @@
     justify-items: center;
 }
 
-.button-wrapper div{
+.button-wrapper ul{
     margin: auto;
     text-align: center;
+    width: 30%;
 }
 
-.button-wrapper div div{
-    margin-top: 10%;
+.button-wrapper ul li{
+    margin: auto;
+    margin-top: 5%;
+    width: 50%;
 }
 
 .deleteButton{
     margin: auto;
+    display: block;
+    width: 100%;
     background-color: #ff0000;
     border: none;
     color: white;
@@ -58,10 +65,13 @@
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .likedCatsLink{
     margin: auto;
+    display: block;
+    width: auto;
     background-color: #309c30;
     border: none;
     color: white;
@@ -69,4 +79,52 @@
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+}
+
+@media only screen and (max-device-width: 600px) {
+    .button-wrapper{
+        padding: 10px;
+        display: flex;
+        margin: auto;
+        justify-items: center;
+    }
+    
+    .button-wrapper ul{
+        margin: auto;
+        text-align: center;
+        width: 30%;
+    }
+    
+    .button-wrapper ul li{
+        margin: auto;
+        margin-top: 5%;
+        width: 100%;
+    }
+    
+    .deleteButton{
+        margin: auto;
+        display: block;
+        width: 100%;
+        background-color: #ff0000;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 11px;
+        cursor: pointer;
+    }
+    
+    .likedCatsLink{
+        margin: auto;
+        display: block;
+        width: auto;
+        background-color: #309c30;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 11px;
+    }
 }
