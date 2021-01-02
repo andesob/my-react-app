@@ -1,0 +1,67 @@
+.flex-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card{
+    height: 450px;
+    width: 350px;
+    padding: 1.5rem;  
+    display: grid;
+    grid-template-rows: 80% 20%;
+    background: black;
+    min-width: 200px;
+    max-width: 450px;
+    border-radius: 50px;
+}
+.card-image{
+    border: solid;
+    border-color: aliceblue;
+    border-radius: 50px;
+    width: 100%;
+    justify-self: center;
+    margin-bottom: 1.5rem;
+}
+.card-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-color: aliceblue;
+    border-radius: 50px;
+}
+
+p{
+    color: white;
+}
+
+.button-container{
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.like-button{
+    height: 50px;
+    width: 100px;
+    background: rgb(54, 235, 54);
+    border-radius: 20px;
+}
+.like-button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+.dislike-button{
+    height: 50px;
+    width: 100px;
+    background: rgb(235, 54, 54);
+    border-radius: 20px;
+}
+.dislike-button:focus {
+    outline: none;
+    box-shadow: none;
+  }

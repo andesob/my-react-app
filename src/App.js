@@ -3,6 +3,8 @@ import Header from './Components/header';
 import Homepage from './Pages/Homepage';
 import Musicpage from './Pages/Musicpage';
 import LikedCatsPage from './Pages/LikedCatsPage';
+import Swiper from "./Pages/Swiper";
+
 import {
   BrowserRouter as Router,
   Route
@@ -21,6 +23,7 @@ class App extends Component {
           <Route exact path='/' component={Homepage} />
           <Route exact path='/likedcats' component={LikedCatsPage}/>
           <Route exact path='/Hotmilfsinmyarea' component={Musicpage} />
+          <Route exact path='/swipe' component={Swiper} />
         </div>
       </Router>
     );
