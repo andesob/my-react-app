@@ -1,0 +1,56 @@
+
+@media only screen and (max-device-width: 600px) {
+}
+
+.grid-container{
+    display: grid;
+    grid-template-areas: 
+    "dislike kill like"
+    "dislike card like"
+    "dislike card like"
+    "dislike card like";
+    grid-template-rows: 50px  1fr 1fr 1fr;
+    grid-template-columns: 1fr 200px 1fr;
+    overflow: visible;
+}
+.flex-container{
+    grid-area: card;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.button-container{
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.like-button{
+    height: 50px;
+    width: 100px;
+    background: rgb(54, 235, 54);
+    border-radius: 20px;
+}
+.like-button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+.dislike-button{
+    height: 50px;
+    width: 100px;
+    background: rgb(235, 54, 54);
+    border-radius: 20px;
+}
+.dislike-button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .like-zone{
+      grid-area: like;
+  }
+  .dislike-zone{
+    grid-area: dislike;
+}
